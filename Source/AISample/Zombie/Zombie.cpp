@@ -32,3 +32,8 @@ void AZombie::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 }
 
+void AZombie::SetCurrentState(EZombieState InState)
+{
+	CurrentState = InState;
+}
+

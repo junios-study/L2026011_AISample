@@ -6,6 +6,10 @@
 #include "GameFramework/Character.h"
 #include "Zombie.generated.h"
 
+
+class UBehaviorTree;
+
+
 UENUM(BlueprintType)
 enum class EZombieState : uint8
 {
@@ -35,5 +39,14 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "State")
+	EZombieState CurrentState;
+
+	UFUNCTION(BlueprintCallable)
+	void SetCurrentState(EZombieState InState);
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "State")
+	TObjectPtr<UBehaviorTree> RunBTAsset;
 
 };

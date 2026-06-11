@@ -13,5 +13,9 @@ UCLASS()
 class AISAMPLE_API AZombieAIController : public AAIController
 {
 	GENERATED_BODY()
-	
+
+public:
+
+	virtual void OnPossess(APawn* InPawn) override;
+
 };
