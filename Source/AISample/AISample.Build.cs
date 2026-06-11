@@ -18,7 +18,8 @@ public class AISample : ModuleRules
 			"StateTreeModule",
 			"GameplayStateTreeModule",
 			"UMG",
-			"Slate"
+			"Slate",
+			"AIModule"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] { });

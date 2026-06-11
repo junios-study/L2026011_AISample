@@ -6,6 +6,8 @@
 #include "AIController.h"
 #include "ZombieAIController.generated.h"
 
+class UAIPerceptionComponent;
+
 /**
  * 
  */
@@ -16,6 +18,18 @@ class AISAMPLE_API AZombieAIController : public AAIController
 
 public:
 
+	AZombieAIController();
+
 	virtual void OnPossess(APawn* InPawn) override;
+
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AI")
+	TObjectPtr<UAIPerceptionComponent> Perception;
+
+	UFUNCTION()
+	void ProcessPerception(AActor* Actor, FAIStimulus Stimulus);
+
+	UFUNCTION()
+	void ProcessPerceptinoForgotten(AActor* Actor);
 
 };
