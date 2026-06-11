@@ -12,6 +12,7 @@
 #include "InputActionValue.h"
 #include "AISample.h"
 #include "Perception/AIPerceptionStimuliSourceComponent.h"
+#include "Perception/AISenseConfig_Hearing.h"
 
 AAISampleCharacter::AAISampleCharacter()
 {
@@ -114,6 +115,17 @@ void AAISampleCharacter::DoMove(float Right, float Forward)
 		AddMovementInput(ForwardDirection, Forward);
 		AddMovementInput(RightDirection, Right);
 	}
+
+	UAISense_Hearing::ReportNoiseEvent(
+		GetWorld(),
+		GetActorLocation(),
+		1.0f,
+		this,
+		0,
+		TEXT("Player")
+	);
+
+	//UE_LOG(LogTemp, Warning, TEXT("Jump"));
 }
 
 void AAISampleCharacter::DoLook(float Yaw, float Pitch)
@@ -128,12 +140,14 @@ void AAISampleCharacter::DoLook(float Yaw, float Pitch)
 
 void AAISampleCharacter::DoJumpStart()
 {
+
 	// signal the character to jump
 	Jump();
 }
 
 void AAISampleCharacter::DoJumpEnd()
 {
+
 	// signal the character to stop jumping
 	StopJumping();
 }

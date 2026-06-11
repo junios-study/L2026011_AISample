@@ -48,6 +48,13 @@ void AZombieAIController::OnPossess(APawn* InPawn)
 
 void AZombieAIController::ProcessPerception(AActor* Actor, FAIStimulus Stimulus)
 {
+
+
+	if (UAIPerceptionSystem::GetSenseClassForStimulus(GetWorld(), Stimulus) == UAISense_Hearing::StaticClass())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("I Hear You."));
+	}
+
 	if (Stimulus.Type == UAISense::GetSenseID<UAISense_Sight>())
 	{
 		AZombie* Zombie = Cast<AZombie>(GetPawn());
