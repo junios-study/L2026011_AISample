@@ -6,6 +6,16 @@
 #include "GameFramework/Character.h"
 #include "Zombie.generated.h"
 
+UENUM(BlueprintType)
+enum class EZombieState : uint8
+{
+	Normal				= 0 UMETA(DisplayName = "Nomral"),
+	Battle				= 1 UMETA(DisplayName = "Battle"),
+	Chase				= 2 UMETA(DisplayName = "Chase"),
+	Death				= 3 UMETA(DisplayName = "Death")
+};
+
+
 UCLASS()
 class AISAMPLE_API AZombie : public ACharacter
 {
