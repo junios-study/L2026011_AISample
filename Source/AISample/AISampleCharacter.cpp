@@ -11,6 +11,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
 #include "AISample.h"
+#include "Perception/AIPerceptionStimuliSourceComponent.h"
 
 AAISampleCharacter::AAISampleCharacter()
 {
@@ -48,6 +49,11 @@ AAISampleCharacter::AAISampleCharacter()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
+
+	SetGenericTeamId(1);
+	StimuliSource = CreateDefaultSubobject<UAIPerceptionStimuliSourceComponent>(TEXT("StimuliSoruce"));
+
+
 }
 
 void AAISampleCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -130,4 +136,13 @@ void AAISampleCharacter::DoJumpEnd()
 {
 	// signal the character to stop jumping
 	StopJumping();
+}
+
+void AAISampleCharacter::SetGenericTeamId(const FGenericTeamId& NewTeamID)
+{
+	if (TeamID != NewTeamID)
+	{
+		TeamID = NewTeamID;
+		// @todo notify perception system that a controller changed team ID
+	}
 }

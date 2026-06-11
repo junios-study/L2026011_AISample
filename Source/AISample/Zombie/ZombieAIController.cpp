@@ -64,12 +64,15 @@ void AZombieAIController::ProcessPerception(AActor* Actor, FAIStimulus Stimulus)
 
 		if (Stimulus.WasSuccessfullySensed())
 		{
+			UE_LOG(LogTemp, Warning, TEXT("Zombie is chase."));
 			Zombie->SetCurrentState(EZombieState::Chase);
+			Blackboard->SetValueAsEnum("CurrentState", (uint8)EZombieState::Chase);
 			Blackboard->SetValueAsObject(TEXT("Player"), Player);
 		}
 		else
 		{
 			Zombie->SetCurrentState(EZombieState::Normal);
+			Blackboard->SetValueAsEnum("CurrentState", (uint8)EZombieState::Normal);
 		}
 	}
 	else if (Stimulus.Type == UAISense::GetSenseID<UAISense_Hearing>())
