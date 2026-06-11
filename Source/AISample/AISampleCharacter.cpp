@@ -116,14 +116,14 @@ void AAISampleCharacter::DoMove(float Right, float Forward)
 		AddMovementInput(RightDirection, Right);
 	}
 
-	UAISense_Hearing::ReportNoiseEvent(
-		GetWorld(),
-		GetActorLocation(),
-		1.0f,
-		this,
-		0,
-		TEXT("Player")
-	);
+	//UAISense_Hearing::ReportNoiseEvent(
+	//	GetWorld(),
+	//	GetActorLocation(),
+	//	1.0f,
+	//	this,
+	//	0,
+	//	TEXT("Player")
+	//);
 
 	//UE_LOG(LogTemp, Warning, TEXT("Jump"));
 }

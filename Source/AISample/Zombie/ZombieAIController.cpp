@@ -87,6 +87,7 @@ void AZombieAIController::ProcessPerception(AActor* Actor, FAIStimulus Stimulus)
 		if (Stimulus.WasSuccessfullySensed())
 		{
 			UE_LOG(LogTemp, Warning, TEXT("I Hear You."));
+			//Stimulus.Tag.IsEqual("Person");
 		}
 	}
 }
